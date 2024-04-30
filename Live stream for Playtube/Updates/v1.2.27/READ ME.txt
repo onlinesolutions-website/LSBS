@@ -1,0 +1,1 @@
+-- Just upload all files except the folder assets/vaneayoung/LiveStream/ini .. do not update this folder ini it contains config.ini file already configured for your website.

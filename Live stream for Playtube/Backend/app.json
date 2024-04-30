@@ -1,0 +1,9 @@
+{
+  "apps" : [{
+    "name"        : "Live Stream Plugin Runtime Application",
+    "script"      : "backend",
+    "watch"       : true,
+    "cwd"         : "YOUR_ABSOLUTE_PATH_TO_THIS_FILE",
+    "args"        : "DB_HOST DB_NAME DB_USER DB_PASS APP_PORT MEDIA_SERVER_PORT MEDIA_SERVER_TLS_PORT HTTP_ENDPOINT_PORT RTMP_ENDPOINT_PORT RTMP_TLS_PORT RTMP_PORT RTMP_HTTP_PORT RTMP_HTTPS_PORT SSL_CRT_PATH SSL_KEY_PATH"
+  }]
+}

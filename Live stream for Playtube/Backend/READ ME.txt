@@ -1,0 +1,13 @@
+1. Upload both files app.json and backend to your server directory where is wowonder located in -> nodejs/kontackt/live [you must create manually 2 folders kontackt & live]
+
+2. Edit the file app.json and replace "args" with your data. 
+
+   Example: DB_HOST = your_database_host (localhost)
+            SSL_CRT_PATH = your path to the certificate (/var/cpanel/ssl/domain_tls/$DOMAIN_NAME/combined)
+
+3. Run in your terminal the following command -> pm2 start app.json --node-args="--max-http-header-size=80000"
+
+4. Go to https://liveplugin.kontackt.de , populate all the inputs and get the Linux command to install the required dependencies.
+
+
+Good luck.

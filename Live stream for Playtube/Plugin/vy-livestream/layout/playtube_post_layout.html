@@ -1,0 +1,40 @@
+<div class="col-md-3 col-sm-6 col-xs-6 keep-padding" data-id="{{ID}}">
+	<script type="text/javascript">
+(function () {
+  "use strict";
+ var player, vy_post_id = <?php echo $pt->video->id;?>, player_html = $('#vylv_feedstream_'+vy_post_id), vy_dash_id = "<?php echo md5($pt->video->id);?>", s_url = "<?php echo $GLOBALS['V_Y']['site_url'];?>"
+  , rtmp_port = "<?php echo $GLOBALS['V_Y']['port']['rtmp_nginx_tls'];?>"
+  , direct_u = `${s_url}:${rtmp_port}/dash/${vy_dash_id}.mpd`;
+ player = dashjs.MediaPlayer().create();
+ player.initialize(player_html.get(0), direct_u, true);
+ setTimeout(()=>{player_html.get(0).play();},2000);
+})();
+</script>
+	<div class="video-list">
+		<div class="video-list-image">
+			<?php if (!empty($pt->video) && $pt->video->live_time >= (time() - 10)) { ?>
+				<div class="wow_liv_counter"><span>{{LANG live}}</span></div>
+			<?php } ?>
+			<a href="{{URL}}" <?php if($pt->video->{'vy-live'} == 'yes'){?>class="is_vy_live"<?php } ?> onclick="vy_global_openLiveStream(event,this,{{ID}});" data-load="?link1=watch&id={{VIDEO_ID_}}">
+ 
+          
+					<video style="width: 100%;height: 100%;position: absolute;" poster="{{THUMBNAIL}}" id="vylv_feedstream_<?php echo $pt->video->id;?>" autoplay muted webkit-playsinline x5-playsinline playsinline tabindex="2" mediatype="video"></video> 
+
+ 
+				<div class="play_hover_btn" onmouseenter="show_gif(this,'{{GIF}}')" onmouseleave="hide_gif(this)">
+					<svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="rgba(255, 255, 255, 0.8)"><path d="M8,5.14V19.14L19,12.14L8,5.14Z"></path></svg>
+				</div>
+				<span class="duration"><?php if($pt->video->{'vy-live'} == 'yes' && $broadcast_data['islivenow'] == 'yes'){ echo "<span style='font-weight:bold;color:#f04749!important'>LIVE</span>"; } else { ?>{{DURATION}}<?php } ?></span>
+			</a>
+		</div>
+		<div class="pt_vid_fixed_height">
+			<div class="video-list-title">
+				<a href="{{URL}}" <?php if($pt->video->{'vy-live'} == 'yes'){?>class="is_vy_live"<?php } ?> onclick="vy_global_openLiveStream(event,this,{{ID}});" data-load="?link1=watch&id={{VIDEO_ID_}}"><h4 title="{{TITLE}}" id="short_title{{ID}}">{{TITLE}}</h4></a>
+			</div>
+			<div class="video-list-by">
+				<span><a href="{{USER url}}" data-load="?link1=timeline&id={{USER username}}">{{USER name_v}}</a></span><br/>
+				<span>{{VIEWS}} {{LANG views}}</span> <span class="bold">·</span> <span>{{TIME}}</span>
+			</div>
+		</div>
+	</div>
+</div>
